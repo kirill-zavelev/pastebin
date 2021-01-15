@@ -1,9 +1,9 @@
 package com.epam.pastebin.test;
 
 import com.epam.pastebin.driver.DriverSetup;
-import com.epam.pastebin.model.Bin;
 import com.epam.pastebin.page.BinCreationPage;
 import com.epam.pastebin.page.BinPage;
+import com.epam.pastebin.utils.PropertyLoader;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -11,14 +11,20 @@ public class BinTest extends DriverSetup {
 
     @Test
     public void createNewBin() {
+        String expectedPaste = PropertyLoader.loadProperty("new.paste");
+        String expectedTitle = PropertyLoader.loadProperty("name.title");
+
         BinCreationPage binCreationPage = new BinCreationPage(driver);
-        Bin expectedBin = new Bin();
-        binCreationPage.fillNewPaste(expectedBin)
-                .fillNameTitle(expectedBin)
+        binCreationPage.fillNewPaste();
+//        Thread.sleep(5000);
+        binCreationPage.fillNameTitle()
                 .selectPasteExpiration()
+                .selectSyntaxHighlighting()
                 .clickCreateNewPaste();
         BinPage binPage = new BinPage(driver);
-        Bin actualBin = binPage.getActualBin();
-        Assert.assertEquals(actualBin, expectedBin, "Expected bin wasn't found");
+        String actualPaste = binPage.getActualPaste();
+        String actualTitle = binPage.getActualTitle();
+        Assert.assertEquals(actualPaste, expectedPaste, "Expected paste: " + expectedPaste + " wasn't found");
+        Assert.assertEquals(actualTitle, expectedTitle, "Expected title: " + expectedTitle + " wasn't found");
     }
 }
