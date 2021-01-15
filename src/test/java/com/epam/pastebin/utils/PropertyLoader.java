@@ -16,7 +16,7 @@ public class PropertyLoader {
             stream = new BufferedInputStream(new FileInputStream(PROPERTY_FILE_PATH));
             properties.load(stream);
             stream.close();
-        } catch (IOException e) {
+        } catch (IOException e){
             e.printStackTrace();
         }
         return properties.getProperty(propertyKey);

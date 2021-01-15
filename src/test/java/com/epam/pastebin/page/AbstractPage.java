@@ -37,6 +37,7 @@ public abstract class AbstractPage {
 
     protected void selectItemFromDropdown(String dropDownItem) {
         List<WebElement> dropDownOptions = driver.findElements(By.xpath("//li[@role='option']"));
+
         dropDownOptions
                 .stream()
                 .filter(opt -> opt.getText().equals(dropDownItem))

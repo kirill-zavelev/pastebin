@@ -16,7 +16,6 @@ public class BinTest extends DriverSetup {
 
         BinCreationPage binCreationPage = new BinCreationPage(driver);
         binCreationPage.fillNewPaste();
-//        Thread.sleep(5000);
         binCreationPage.fillNameTitle()
                 .selectPasteExpiration()
                 .selectSyntaxHighlighting()

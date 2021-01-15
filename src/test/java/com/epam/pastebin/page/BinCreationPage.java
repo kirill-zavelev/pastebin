@@ -14,8 +14,8 @@ public class BinCreationPage extends AbstractPage {
     private static final String NEW_PASTE_TEXT = PropertyLoader.loadProperty("new.paste");
     private static final String NAME_TITLE_TEXT = PropertyLoader.loadProperty("name.title");
 
-    private static final String a = "a";
-    private static final String b = "b";
+//    private static final String a = "a";
+//    private static final String b = "b";
 
     @FindBy(id = "postform-text")
     private WebElement newPaste;
