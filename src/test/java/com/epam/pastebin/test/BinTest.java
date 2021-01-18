@@ -13,17 +13,17 @@ public class BinTest extends DriverSetup {
     public void createNewBin() {
         String expectedPaste = PropertyLoader.loadProperty("new.paste");
         String expectedTitle = PropertyLoader.loadProperty("name.title");
+        String defaultColor = PropertyLoader.loadProperty("default.color");
 
         BinCreationPage binCreationPage = new BinCreationPage(driver);
-        binCreationPage.fillNewPaste();
-        binCreationPage.fillNameTitle()
-                .selectPasteExpiration()
-                .selectSyntaxHighlighting()
-                .clickCreateNewPaste();
+        binCreationPage.fillNewPaste()
+            .fillNameTitle()
+            .selectPasteExpiration()
+            .selectSyntaxHighlighting()
+            .clickCreateNewPaste();
         BinPage binPage = new BinPage(driver);
-        String actualPaste = binPage.getActualPaste();
-        String actualTitle = binPage.getActualTitle();
-        Assert.assertEquals(actualPaste, expectedPaste, "Expected paste: " + expectedPaste + " wasn't found");
-        Assert.assertEquals(actualTitle, expectedTitle, "Expected title: " + expectedTitle + " wasn't found");
+        Assert.assertEquals(binPage.getActualPaste(), expectedPaste, "Expected paste: " + expectedPaste + " wasn't found");
+        Assert.assertEquals(binPage.getActualTitle(), expectedTitle, "Expected title: " + expectedTitle + " wasn't found");
+        Assert.assertNotEquals(binPage.getColorOfBash(), defaultColor, "Bash has default color: " + defaultColor);
     }
 }

@@ -19,6 +19,7 @@ public class DriverSetup {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(BASE_URL);
+
     }
 
     @AfterMethod

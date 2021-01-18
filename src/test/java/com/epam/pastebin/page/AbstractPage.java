@@ -44,4 +44,8 @@ public abstract class AbstractPage {
                 .findFirst()
                 .ifPresent(WebElement::click);
     }
+
+    protected String getColorOfWebElement(WebElement element) {
+        return element.getCssValue("background-color");
+    }
 }

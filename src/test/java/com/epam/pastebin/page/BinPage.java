@@ -1,6 +1,5 @@
 package com.epam.pastebin.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,17 +10,21 @@ public class BinPage extends AbstractPage {
         super(driver);
     }
 
-    @FindBy(id = "postform-text")
+    @FindBy(xpath = "//ol[@class='bash']")
     private WebElement newPaste;
 
-    private static final By NAME_TITLE = By.xpath("//div[@class='info-top']/h1");
-    private static final By NEW_PASTE = By.xpath("//ol[@class='bash']");
+    @FindBy(xpath = "//div[@class='info-top']/h1")
+    private WebElement nameTitle;
 
     public String getActualPaste() {
-        return driver.findElement(NEW_PASTE).getText();
+        return newPaste.getText();
     }
 
     public String getActualTitle() {
-        return driver.findElement(NAME_TITLE).getText();
+        return nameTitle.getText();
+    }
+
+    public String getColorOfBash() {
+        return getColorOfWebElement(newPaste);
     }
 }

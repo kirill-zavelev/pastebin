@@ -19,6 +19,7 @@ public class PropertyLoader {
         } catch (IOException e){
             e.printStackTrace();
         }
+
         return properties.getProperty(propertyKey);
     }
 }
