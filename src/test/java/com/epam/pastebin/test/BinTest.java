@@ -11,12 +11,7 @@ public class BinTest extends DriverSetup {
 
     @Test
     public void createNewBin() {
-//        String expectedPaste = PropertyLoader.loadProperty("expected.paste");
-//        String newPasteText = PropertyLoader.loadProperty("new.paste");
-//        String nameTitleText = PropertyLoader.loadProperty("new.paste");
-//        String expectedTitle = PropertyLoader.loadProperty("name.title");
         String defaultColor = PropertyLoader.loadProperty("default.color");
-
         BinCreationPage binCreationPage = new BinCreationPage(driver);
         String expectedNewPaste = binCreationPage.fillNewPaste()
                 .getNewPasteText();

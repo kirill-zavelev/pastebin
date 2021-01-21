@@ -13,8 +13,6 @@ public class BinCreationPage extends AbstractPage {
     private static final String SCROLL_PAGE_DOWN = PropertyLoader.loadProperty("scroll.page.down");
     private static final String NEW_PASTE_TEXT = PropertyLoader.loadProperty("new.paste");
     private static final String NAME_TITLE_TEXT = PropertyLoader.loadProperty("name.title");
-    private static final String EXPIRATION_DROPDOWN = "Expiration";
-    private static final String SYNTAX_HIGHLIGHTING_DROPDOWN = "Syntax highlighting";
 
     @FindBy(id = "postform-text")
     private WebElement newPaste;
@@ -61,17 +59,6 @@ public class BinCreationPage extends AbstractPage {
 
     public void expandSyntaxHighlightingDropDown() {
         syntaxHighlightingDropDown.click();
-    }
-
-    public void expandDropDown(String dropDownName) {
-        switch (dropDownName) {
-            case (EXPIRATION_DROPDOWN):
-                expirationDropDown.click();
-                break;
-            case (SYNTAX_HIGHLIGHTING_DROPDOWN):
-                syntaxHighlightingDropDown.click();
-                break;
-        }
     }
 
     public BinCreationPage selectPasteExpiration() {
