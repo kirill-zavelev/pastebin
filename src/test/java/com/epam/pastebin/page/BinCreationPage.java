@@ -41,10 +41,18 @@ public class BinCreationPage extends AbstractPage {
         return this;
     }
 
+    public String getNewPasteText() {
+        return newPaste.getAttribute("value");
+    }
+
     public BinCreationPage fillNameTitle() {
         sendKeysWhenInputIntractable(nameTitle, NAME_TITLE_TEXT);
 
         return this;
+    }
+
+    public String getNameTitleText() {
+        return nameTitle.getAttribute("value");
     }
 
     public void expandExpirationDropDown() {
@@ -80,11 +88,10 @@ public class BinCreationPage extends AbstractPage {
         return this;
     }
 
-    public BinPage clickCreateNewPaste() {
+    public void clickCreateNewPaste() {
         JavascriptExecutor jse = (JavascriptExecutor)driver;
         jse.executeScript(SCROLL_PAGE_DOWN);
         waitForElementToBeClickable(createNewPasteBtn).click();
 
-        return new BinPage(driver);
     }
 }

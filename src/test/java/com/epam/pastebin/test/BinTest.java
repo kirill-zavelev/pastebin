@@ -11,19 +11,23 @@ public class BinTest extends DriverSetup {
 
     @Test
     public void createNewBin() {
-        String expectedPaste = PropertyLoader.loadProperty("new.paste");
-        String expectedTitle = PropertyLoader.loadProperty("name.title");
+//        String expectedPaste = PropertyLoader.loadProperty("expected.paste");
+//        String newPasteText = PropertyLoader.loadProperty("new.paste");
+//        String nameTitleText = PropertyLoader.loadProperty("new.paste");
+//        String expectedTitle = PropertyLoader.loadProperty("name.title");
         String defaultColor = PropertyLoader.loadProperty("default.color");
 
         BinCreationPage binCreationPage = new BinCreationPage(driver);
-        binCreationPage.fillNewPaste()
-            .fillNameTitle()
-            .selectPasteExpiration()
-            .selectSyntaxHighlighting()
-            .clickCreateNewPaste();
+        String expectedNewPaste = binCreationPage.fillNewPaste()
+                .getNewPasteText();
+        String expectedNameTitle = binCreationPage.fillNameTitle()
+                .getNameTitleText();
+        binCreationPage.selectPasteExpiration()
+                .selectSyntaxHighlighting()
+                .clickCreateNewPaste();
         BinPage binPage = new BinPage(driver);
-        Assert.assertEquals(binPage.getActualPaste(), expectedPaste, "Expected paste: " + expectedPaste + " wasn't found");
-        Assert.assertEquals(binPage.getActualTitle(), expectedTitle, "Expected title: " + expectedTitle + " wasn't found");
+        Assert.assertEquals(binPage.getActualPaste(), expectedNewPaste, "Expected paste: " + expectedNewPaste + " wasn't found");
+        Assert.assertEquals(binPage.getActualTitle(), expectedNameTitle, "Expected title: " + expectedNameTitle + " wasn't found");
         Assert.assertNotEquals(binPage.getColorOfBash(), defaultColor, "Bash has default color: " + defaultColor);
     }
 }
