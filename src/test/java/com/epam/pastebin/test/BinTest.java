@@ -25,4 +25,13 @@ public class BinTest extends DriverSetup {
         Assert.assertEquals(binPage.getActualTitle(), expectedNameTitle, "Expected title: " + expectedNameTitle + " wasn't found");
         Assert.assertNotEquals(binPage.getColorOfBash(), defaultColor, "Bash has default color: " + defaultColor);
     }
+
+    @Test
+    public void firstTest() {
+        BinCreationPage binCreationPage = new BinCreationPage(driver);
+        binCreationPage.fillNewPaste()
+                .fillNameTitle()
+                .selectPasteExpiration()
+                .clickCreateNewPaste();
+    }
 }
